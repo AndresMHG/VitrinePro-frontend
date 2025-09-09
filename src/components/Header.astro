@@ -1,0 +1,97 @@
+<header class="header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="/icon.svg" alt="VitrinePro Logo" class="logo-img desktop-logo" draggable="false" />
+      <img src="/icon-mobile.svg" alt="VitrinePro Icon" class="logo-img mobile-logo" draggable="false" />
+    </div>
+    <nav class="actions">
+      <a href="/login" class="login-link">Entrar</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+.header {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  min-height: 48px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  display: block;
+  height: 32px;
+  width: auto;
+  transition: height 0.2s;
+}
+
+.desktop-logo {
+  display: block;
+}
+.mobile-logo {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login-link {
+  color: #0a66c2;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 4px 0;
+  border-radius: 6px;
+  transition: background 0.2s;
+  cursor: pointer;
+  display: inline-block;
+}
+.login-link:hover,
+.login-link:focus {
+  background: #e6f0fa;
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    min-height: 44px;
+    padding: 6px 8px;
+  }
+  .desktop-logo {
+    display: none;
+  }
+  .mobile-logo {
+    display: block;
+    height: 28px;
+    width: 28px;
+    margin: 0;
+  }
+}
+</style>
