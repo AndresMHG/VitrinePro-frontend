@@ -10,65 +10,42 @@
 
 <style>
 .cta-section {
-  width: 100%;
-  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
-  color: #fff;
+  background-color: #ffffff;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 24px;
+  justify-content: center;
+  margin: 0 20px;
 }
 
 .cta-content {
-  width: 100%;
-  max-width: 1030px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  text-align: center;
+  gap: 12px;
+  margin: 12px;
 }
 
-.cta-title {
-  margin: 0;
-  font-size: clamp(2rem, 5vw, 3.5rem); /* mínimo más grande */
+.cta-title{
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  color: #0A66C2;
+  font-size: clamp(2rem, 3vw, 3rem);
 }
-
 .cta-desc {
   margin: 0;
-  max-width: 700px;
-  font-size: clamp(1rem, 2.3vw, 1.4rem);
-  font-weight: 400;
-  line-height: 1.5;
-  color: #dce9f7; /* gris azulado sutil */
+  text-align: center;
+  max-width: 600px;
+  font-size: clamp(1rem, 1rem);
 }
-
 .cta-btn {
-  margin: 0;
-  max-width: 280px;
-  display: inline-block;
-  background: linear-gradient(180deg, #ffffff, #f0f4f8);
-  color: #0a66c2;
-  font-weight: 600;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  padding: 14px 0;
-  border-radius: 12px;
+  margin-top: 10px;
+  background-color: #0A66C2;
+  color: white;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(10,102,194,0.15);
-  transition: all 0.3s ease;
-  width: 100%;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.cta-btn:hover,
-.cta-btn:focus {
-  background: #ffffff;
-  color: #004182;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(10,102,194,0.25);
-}
 </style>
