@@ -1,92 +1,130 @@
 <template>
   <div class="search-wrapper">
-    <h2 class="search-title">Encontre oportunidades e talentos</h2>
-    <div class="search-container">
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Buscar..."
-      />
-      <button class="search-btn">Buscar</button>
+    <div class="search-section-container">
+      <!-- Filtros superiores -->
+      <div class="search-section-filters">
+        <button class="category-item active">Projeto</button>
+        <button class="category-item">Comunidade</button>
+        <button class="category-item">Talentos</button>
+        <button class="category-item">Ferramentas</button>
+        <button class="category-item">Serviços</button>
+      </div>
+
+      <!-- Barra de búsqueda -->
+      <div class="search-section-input">
+        <input type="text" placeholder="Encontre oportunidades e talentos" class="search-input" />
+        <button class="search-button">Buscar</button>
+      </div>
+
+      <!-- Categorías inferiores -->
+      <div class="search-section-category">
+        <button class="category-item">Tecnologia</button>
+        <button class="category-item">Saúde</button>
+        <button class="category-item">Comercial</button>
+        <button class="category-item">Direito</button>
+        <button class="category-item">Logística</button>
+        <button class="category-item">Engenharia</button>
+        <button class="category-item">Marketing</button>
+        <button class="category-item">RH</button>
+        <button class="category-item">Contábil e Fiscal</button>
+      </div>
     </div>
   </div>
 </template>
 
-<script setup>
-</script>
-
 <style scoped>
 .search-wrapper {
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
 }
 
-.search-title {
-  margin-bottom: 16px;
-  text-align: center;
-  color: #222;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  font-size: clamp(2rem, 5vw, 2.5rem);
+.search-section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 800px;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
-.search-container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(60,60,67,0.07);
+/* Filtros de arriba */
+.search-section-filters {
   display: flex;
   gap: 12px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-item {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  background: #f8f8f8;
+  border: none;
+  color: #444;
+}
+
+.category-item:hover {
+  background: #eaeaea;
+}
+
+.category-item.active {
+  background: #0A66C2;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Input de búsqueda */
+.search-section-input {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
 }
 
 .search-input {
-  flex: 1 1 0;
-  min-width: 120px;
-  width: 100%;
-  padding: 10px 12px;
+  flex: 1;
+  padding: 12px 16px;
   border: none;
-  border-radius: 6px;
-  background: #f2f2f7;
-  font-size: 16px;
   outline: none;
-  box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
 }
 
-.search-btn {
-  flex: 0 0 auto;
-  width: 120px;
-  padding: 10px 0;
-  border: none;
-  border-radius: 6px;
-  background: #007aff;
+.search-button {
+  background: #0A66C2;
   color: #fff;
-  font-size: 16px;
-  font-weight: 600;
+  border: none;
+  padding: 0 20px;
   cursor: pointer;
-  transition: background 0.2s;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.search-btn:hover {
-  background: #005bb5;
+.search-button:hover {
+  background: #004182;
 }
 
-@media (max-width: 900px) {
-  .search-wrapper {
-    min-width: 0;
-    max-width: 100%;
-    padding: 0 8px;
-  }
-  .search-container {
-    padding: 12px;
-    gap: 8px;
-    flex-direction: column;
-  }
-  .search-btn {
-    width: 100%;
-    margin-top: 8px;
-  }
+.search-section-category {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-section-category .category-item {
+  background: #ffffff;
+  color: #666;
+  font-size: 12px;
+  padding: 6px 14px;
 }
 </style>
