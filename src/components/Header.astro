@@ -17,13 +17,22 @@ import { Font } from 'astro:assets';
 <style>
 body {
   font-family: var(--font-inter);
+  background: #f5f7fa; /* fondo base suave, gris muy claro */
+  margin: 0;
 }
+
+/* Header */
 .header {
   display: flex;
   justify-content: center;
-  background: white;
+  background: #ffffff; /* limpio */
   height: 70px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* sutil para separar */
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -31,31 +40,34 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 20px;
-  .logo {
-    display: flex;
-    align-items: center;
-    .logo-img {
-      height: 25px;
-      user-select: none;
-    }
-  }
-
-  .actions {
-    width: 70px;
-    height: 30px;
-    background-color: #0A66C2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    .login-link{
-      color: white;
-      font-size: 15px;
-      font-weight: 400;
-      text-decoration: none;
-      user-select: none;
-    }
-  }
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  height: 25px;
+  user-select: none;
+}
+
+.actions {
+  background-color: #0A66C2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  padding: 6px 16px;
+  transition: all 0.3s ease;
+}
+.actions:hover {
+  background-color: #004182;
+}
+.login-link {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  user-select: none;
+}
 </style>

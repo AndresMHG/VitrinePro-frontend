@@ -1,7 +1,6 @@
 <template>
   <div class="vitrine-area">
     <Search />
-     Filtros
   </div>
 </template>
 <script setup>
