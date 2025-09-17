@@ -2,20 +2,22 @@
   <section class="results-section">
     <div class="results-grid">
       <div v-for="n in 9" :key="n" class="result-card">
+        <!-- Imagen aleatoria -->
         <div class="card-image">
           <img
-            :src="`https://source.unsplash.com/random/600x400?sig=${n}`"
+            :src="`https://picsum.photos/id/${n + 20}/600/400`"
             alt="Projeto Preview"
           />
         </div>
+
+        <!-- Info -->
         <div class="card-info">
+          <h3 class="project-title">{{ getRandomProject() }}</h3>
+          <p class="creator-name">por {{ getRandomUser() }}</p>
+
           <div class="card-stats">
-            <span class="stat">
-              <i class="fas fa-heart"></i> {{ 100 + n }}
-            </span>
-            <span class="stat">
-              <i class="fas fa-eye"></i> {{ 500 + n * 30 }}
-            </span>
+            <span class="stat">❤️ {{ 100 + n }}</span>
+            <span class="stat">👁️ {{ 500 + n * 30 }}</span>
           </div>
         </div>
       </div>
@@ -23,7 +25,40 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+const projects = [
+  "Casa Moderna",
+  "Portfolio Criativo",
+  "Aplicativo Móvel",
+  "Loja Virtual",
+  "Sistema de Gestão",
+  "Blog Minimalista",
+  "Dashboard Analytics",
+  "Landing Page",
+  "Arte Digital"
+]
+
+const users = [
+  "Ana Silva",
+  "Carlos Mendes",
+  "Mariana Costa",
+  "João Pereira",
+  "Lucas Oliveira",
+  "Fernanda Lima",
+  "Ricardo Santos",
+  "Paula Souza",
+  "Tiago Gomes"
+]
+
+// Funciones para aleatorizar
+function getRandomProject() {
+  return projects[Math.floor(Math.random() * projects.length)]
+}
+
+function getRandomUser() {
+  return users[Math.floor(Math.random() * users.length)]
+}
+</script>
 
 <style scoped>
 .results-section {
@@ -93,9 +128,3 @@
   gap: 6px;
 }
 </style>
-
-<!-- Importar Font Awesome -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
