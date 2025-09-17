@@ -2,18 +2,22 @@
   <div class="cta-content">
     <h1 class="cta-title">Impulsione sua carreira com VitrinePro</h1>
     <p class="cta-desc">
-      Mostre seus projetos, conecte-se com profissionais e acelere seu crescimento profissional em uma plataforma criada para talentos de todas as áreas.
+      Mostre seus projetos, conecte-se com profissionais e acelere seu crescimento
+      profissional em uma plataforma criada para talentos de todas as áreas.
     </p>
-    <a href="/cadastro" class="cta-btn">Crie sua vitrine grátis</a>
+    <a href="/cadastro" class="cta-btn">
+      Crie sua vitrine grátis
+    </a>
   </div>
 </section>
 
-<style>
+<style scoped>
 .cta-section {
-  background-color: #ffffff;
+  background: linear-gradient(180deg, #f9fbff 0%, #ffffff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 60px 20px;
 }
 
 .cta-content {
@@ -21,31 +25,42 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
-  margin: 12px;
+  gap: 16px;
+  max-width: 800px;
 }
 
-.cta-title{
+.cta-title {
   font-weight: 700;
   color: #0A66C2;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   margin: 0;
 }
+
 .cta-desc {
   margin: 0;
   text-align: center;
   max-width: 600px;
-  font-size: clamp(1rem, 1rem);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
 }
+
 .cta-btn {
-  margin-top: 10px;
-  background-color: #0A66C2;
+  margin-top: 20px;
+  background: #0A66C2;
   color: white;
   text-decoration: none;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: 12px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(10, 102, 194, 0.2);
+}
+
+.cta-btn:hover {
+  background: #004182;
+  transform: scale(1.03);
 }
 
 </style>

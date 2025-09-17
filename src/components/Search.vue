@@ -12,7 +12,11 @@
 
       <!-- Barra de búsqueda -->
       <div class="search-section-input">
-        <input type="text" placeholder="Encontre oportunidades e talentos" class="search-input" />
+        <input
+        type="text"
+        placeholder="Encontre oportunidades e talentos"
+        class="search-input"
+        />
         <button class="search-button">Buscar</button>
       </div>
 
@@ -49,7 +53,7 @@
   padding: 0 20px;
 }
 
-/* Filtros de arriba */
+/* Filtros superiores */
 .search-section-filters {
   display: flex;
   gap: 12px;
@@ -75,7 +79,7 @@
 }
 
 .category-item.active {
-  background: #0A66C2;
+  background: #0a66c2;
   color: #fff;
   font-weight: 600;
 }
@@ -83,11 +87,14 @@
 /* Input de búsqueda */
 .search-section-input {
   display: flex;
+  align-items: center;
   width: 100%;
   max-width: 800px;
+  border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 16px;
+  background: #fff;
 }
 
 .search-input {
@@ -97,17 +104,17 @@
   outline: none;
   font-size: 14px;
   color: #333;
-  background: #fff;
 }
 
 .search-button {
-  background: #0A66C2;
+  background: #0a66c2;
   color: #fff;
   border: none;
-  padding: 0 20px;
+  padding: 0 16px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
+  height: 100%;
 }
 
 .search-button:hover {
