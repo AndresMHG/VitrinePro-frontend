@@ -1,66 +1,213 @@
 <section class="cta-section">
-  <div class="cta-content">
-    <h1 class="cta-title">Impulsione sua carreira com VitrinePro</h1>
-    <p class="cta-desc">
-      Mostre seus projetos, conecte-se com profissionais e acelere seu crescimento
-      profissional em uma plataforma criada para talentos de todas as áreas.
-    </p>
-    <a href="/cadastro" class="cta-btn">
-      Crie sua vitrine grátis
-    </a>
+  <div class="cta-container">
+    <div class="cta-content">
+      <div class="cta-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="#0A66C2"/>
+        </svg>
+      </div>
+      <h1 class="cta-title">Impulsione sua carreira com VitrinePro</h1>
+      <p class="cta-desc">
+        Mostre seus projetos, conecte-se com profissionais e acelere seu crescimento
+        profissional em uma plataforma criada para talentos de todas as áreas.
+      </p>
+      <a href="/cadastro" class="cta-btn">
+        <span>Crie sua vitrine grátis</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="cta-visual">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+    </div>
   </div>
 </section>
 
 <style scoped>
 .cta-section {
-  background: linear-gradient(180deg, #f9fbff 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #f9fbff 0%, #e8f4fd 50%, #ffffff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  gap: 60px;
 }
 
 .cta-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
-  max-width: 800px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 20px;
+  max-width: 600px;
+  flex: 1;
+}
+
+.cta-icon {
+  margin-bottom: 10px;
 }
 
 .cta-title {
-  font-weight: 700;
+  font-weight: 800;
   color: #0A66C2;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin: 0;
+  line-height: 1.1;
 }
 
 .cta-desc {
   margin: 0;
-  text-align: center;
-  max-width: 600px;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 500px;
 }
 
 .cta-btn {
-  margin-top: 20px;
-  background: #0A66C2;
+  margin-top: 30px;
+  background: linear-gradient(135deg, #0A66C2, #004182);
   color: white;
   text-decoration: none;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 18px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(10, 102, 194, 0.2);
+  box-shadow: 0 8px 25px rgba(10, 102, 194, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .cta-btn:hover {
-  background: #004182;
-  transform: scale(1.03);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(10, 102, 194, 0.4);
 }
 
+.cta-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.cta-visual {
+  flex: 1;
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.1), rgba(10, 102, 194, 0.05));
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 80px;
+  height: 80px;
+  top: 60%;
+  right: 30%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cta-section {
+    padding: 60px 20px;
+  }
+  .cta-container {
+    gap: 40px;
+  }
+  .cta-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .cta-content {
+    align-items: center;
+    text-align: center;
+  }
+  .cta-visual {
+    height: 200px;
+  }
+  .cta-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .cta-section {
+    padding: 50px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-section {
+    padding: 40px 10px;
+  }
+  .cta-content {
+    gap: 16px;
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+  .cta-desc {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .cta-btn {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+  .cta-visual {
+    height: 150px;
+  }
+  .floating-shape {
+    width: 60px;
+    height: 60px;
+  }
+}
 </style>

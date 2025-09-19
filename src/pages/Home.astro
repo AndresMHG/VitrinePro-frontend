@@ -8,8 +8,29 @@ import Footer from '../components/Footer.astro';
 ---
 <Layout>
   <Header />
-  <CtaSection />
-  <VitrineArea />
-  <Result />
+  <main class="main-content">
+    <CtaSection />
+    <VitrineArea />
+    <Result />
+  </main>
   <Footer />
 </Layout>
+
+<style>
+.main-content {
+  min-height: calc(100vh - 140px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    min-height: calc(100vh - 120px);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    min-height: calc(100vh - 100px);
+  }
+}
+</style>
