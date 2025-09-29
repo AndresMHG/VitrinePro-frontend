@@ -26,7 +26,23 @@ import Footer from '../components/Footer.astro';
     <!-- Projects Showcase -->
     <section class="projects-section">
       <div class="section-container">
+        <!-- Project Filter Dropdown -->
+        <div class="filter-dropdown-container">
+          <button class="filter-toggle" id="filterToggle">
+            <span class="filter-text">Example Projects</span>
+            <span class="filter-arrow">▼</span>
+          </button>
+          <div class="filter-menu" id="filterMenu">
+            <button class="filter-option active" data-filter="example">Example Projects</button>
+            <button class="filter-option" data-filter="pessoais">Projetos pessoais</button>
+            <button class="filter-option" data-filter="artigos">Artigos publicados</button>
+            <button class="filter-option" data-filter="recentes">Más Recientes</button>
+            <button class="filter-option" data-filter="antigos">Más Antiguos</button>
+          </div>
+        </div>
         <h2 class="section-title animate-on-scroll">Editável pelo usuário "Example Projects"</h2>
+
+
         <div class="projects-grid">
           <div class="project-card animate-on-scroll" data-category="web">
             <div class="project-image">
@@ -329,7 +345,7 @@ import Footer from '../components/Footer.astro';
      <!-- Studies & Diplomas Section -->
      <section class="studies-section">
        <div class="section-container">
-         <h2 class="section-title animate-on-scroll">Estudios y Diplomas</h2>
+         <h2 class="section-title-filter animate-on-scroll">Estudios y Diplomas</h2>
          <div class="timeline">
            <div class="timeline-item animate-on-scroll">
              <div class="timeline-marker"></div>
@@ -521,6 +537,15 @@ import Footer from '../components/Footer.astro';
     position: relative;
   }
 
+    .section-title-filter {
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: 400;
+    color: #1a202c;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
   .section-title::after {
     content: '';
     position: absolute;
@@ -704,6 +729,110 @@ import Footer from '../components/Footer.astro';
   .projects-section {
     padding: 60px 0;
     background: #fff;
+  }
+
+  /* Project Filter Dropdown */
+  .filter-dropdown-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+
+  .filter-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    border-color: var(--primary-color);
+  }
+
+  .filter-text {
+    font-weight: 600;
+  }
+
+  .filter-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+
+  .filter-toggle.active .filter-arrow {
+    transform: rotate(180deg);
+  }
+
+  .filter-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    margin-top: 0.5rem;
+  }
+
+  .filter-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .filter-option {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--primary-color);
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .filter-option:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--primary-color);
+  }
+
+  .filter-option.active {
+    background: var(--gradient-bg);
+    color: #fff;
+  }
+
+  .filter-option:first-child {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .filter-option:last-child {
+    border-radius: 0 0 16px 16px;
   }
 
   /* Studies Section */
@@ -1135,10 +1264,6 @@ import Footer from '../components/Footer.astro';
   }
 
   @media (max-width: 480px) {
-    .profile-main {
-      padding: 10px;
-    }
-
     .hero-section {
       padding: 30px 15px;
     }
@@ -1552,5 +1677,52 @@ import Footer from '../components/Footer.astro';
       }
     `;
     document.head.appendChild(style);
+
+    // Filter Dropdown Functionality
+    const filterToggle = document.getElementById('filterToggle');
+    const filterMenu = document.getElementById('filterMenu');
+    const filterText = filterToggle?.querySelector('.filter-text');
+
+    if (filterToggle && filterMenu && filterText) {
+      // Toggle dropdown
+      filterToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = filterMenu.classList.contains('active');
+        filterMenu.classList.toggle('active');
+        filterToggle.classList.toggle('active');
+
+        // Close dropdown when clicking outside
+        if (!isActive) {
+          document.addEventListener('click', function closeDropdown(event) {
+            if (!filterToggle.contains(event.target as Node) && !filterMenu.contains(event.target as Node)) {
+              filterMenu.classList.remove('active');
+              filterToggle.classList.remove('active');
+              document.removeEventListener('click', closeDropdown);
+            }
+          });
+        }
+      });
+
+      // Handle filter option selection
+      filterMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const option = e.target as HTMLElement;
+        if (option.classList.contains('filter-option')) {
+          const filterValue = option.textContent || '';
+          filterText.textContent = filterValue;
+
+          // Update active state
+          filterMenu.querySelectorAll('.filter-option').forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+
+          // Close dropdown
+          filterMenu.classList.remove('active');
+          filterToggle.classList.remove('active');
+
+          // Here you could add logic to filter projects based on the selected option
+          console.log('Selected filter:', option.getAttribute('data-filter'));
+        }
+      });
+    }
   });
 </script>
