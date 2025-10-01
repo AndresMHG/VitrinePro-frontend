@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ProjectModal from '../components/ProjectModal.vue';
 ---
 
 <Layout>
@@ -492,6 +493,15 @@ import Footer from '../components/Footer.astro';
   </main>
   <Footer />
 
+  <!-- Project Modal Component -->
+  <ProjectModal
+    :is-visible="showModal"
+    :projects="projects"
+    :initial-project-index="currentProjectIndex"
+    @close="closeModal"
+    @navigate="navigateToProject"
+  />
+
   <!-- Project Modals -->
   <div id="ecommerceModal" class="project-modal" data-index="0">
     <div class="modal-overlay"></div>
@@ -724,21 +734,17 @@ import Footer from '../components/Footer.astro';
         <div class="modal-share">
           <h4>Compartir Proyecto</h4>
           <div class="share-buttons">
-            <button class="share-btn linkedin" data-platform="linkedin">
+            <button class="share-btn linkedin" data-platform="linkedin" title="Compartir en LinkedIn">
               <span class="share-icon">💼</span>
-              LinkedIn
             </button>
-            <button class="share-btn instagram" data-platform="instagram">
+            <button class="share-btn instagram" data-platform="instagram" title="Compartir en Instagram">
               <span class="share-icon">📷</span>
-              Instagram
             </button>
-            <button class="share-btn whatsapp" data-platform="whatsapp">
+            <button class="share-btn whatsapp" data-platform="whatsapp" title="Compartir en WhatsApp">
               <span class="share-icon">💬</span>
-              WhatsApp
             </button>
-            <button class="share-btn pdf" data-platform="pdf">
+            <button class="share-btn pdf" data-platform="pdf" title="Generar PDF">
               <span class="share-icon">📄</span>
-              Generar PDF
             </button>
           </div>
         </div>
@@ -753,10 +759,21 @@ import Footer from '../components/Footer.astro';
     </div>
   </div>
 
-  <div id="securityModal" class="project-modal">
+  <div id="securityModal" class="project-modal" data-index="2">
     <div class="modal-overlay"></div>
     <div class="modal-content">
+      <!-- Navigation Arrows -->
+      <button class="modal-nav modal-nav-prev" data-direction="prev">
+        <span class="nav-arrow">‹</span>
+      </button>
+      <button class="modal-nav modal-nav-next" data-direction="next">
+        <span class="nav-arrow">›</span>
+      </button>
+
       <button class="modal-close">&times;</button>
+      <button class="modal-expand" title="Expandir para página completa">
+        <span class="expand-icon">⛶</span>
+      </button>
 
       <div class="modal-header">
         <div class="modal-category">Example Projects</div>
@@ -808,11 +825,33 @@ import Footer from '../components/Footer.astro';
             <span class="detail-label">Equipo:</span>
             <span class="detail-value">4 security experts</span>
           </div>
+          <div class="detail-item">
+            <span class="detail-label">Estado:</span>
+            <span class="detail-value status-completed">Completado</span>
+          </div>
+        </div>
+
+        <div class="modal-share">
+          <h4>Compartir Proyecto</h4>
+          <div class="share-buttons">
+            <button class="share-btn linkedin" data-platform="linkedin" title="Compartir en LinkedIn">
+              <span class="share-icon">💼</span>
+            </button>
+            <button class="share-btn instagram" data-platform="instagram" title="Compartir en Instagram">
+              <span class="share-icon">📷</span>
+            </button>
+            <button class="share-btn whatsapp" data-platform="whatsapp" title="Compartir en WhatsApp">
+              <span class="share-icon">💬</span>
+            </button>
+            <button class="share-btn pdf" data-platform="pdf" title="Generar PDF">
+              <span class="share-icon">📄</span>
+            </button>
+          </div>
         </div>
 
         <div class="modal-actions">
           <a href="/project/security" class="modal-link primary">
-            <span>Ver Proyecto</span>
+            <span>Ver Proyecto Completo</span>
             <span class="link-icon">→</span>
           </a>
         </div>
@@ -820,10 +859,21 @@ import Footer from '../components/Footer.astro';
     </div>
   </div>
 
-  <div id="architectureModal" class="project-modal">
+  <div id="architectureModal" class="project-modal" data-index="3">
     <div class="modal-overlay"></div>
     <div class="modal-content">
+      <!-- Navigation Arrows -->
+      <button class="modal-nav modal-nav-prev" data-direction="prev">
+        <span class="nav-arrow">‹</span>
+      </button>
+      <button class="modal-nav modal-nav-next" data-direction="next">
+        <span class="nav-arrow">›</span>
+      </button>
+
       <button class="modal-close">&times;</button>
+      <button class="modal-expand" title="Expandir para página completa">
+        <span class="expand-icon">⛶</span>
+      </button>
 
       <div class="modal-header">
         <div class="modal-category">Projetos pessoais</div>
@@ -856,6 +906,18 @@ import Footer from '../components/Footer.astro';
           </ul>
         </div>
 
+        <div class="modal-tags">
+          <h4>Tags del Proyecto</h4>
+          <div class="tags-container">
+            <span class="tag-pill">Architecture</span>
+            <span class="tag-pill">Sustainable</span>
+            <span class="tag-pill">LEED</span>
+            <span class="tag-pill">Urban Design</span>
+            <span class="tag-pill">Green Building</span>
+            <span class="tag-pill">Residential</span>
+          </div>
+        </div>
+
         <div class="modal-details">
           <div class="detail-item">
             <span class="detail-label">Tecnologías:</span>
@@ -875,11 +937,33 @@ import Footer from '../components/Footer.astro';
             <span class="detail-label">Equipo:</span>
             <span class="detail-value">12 architects & engineers</span>
           </div>
+          <div class="detail-item">
+            <span class="detail-label">Estado:</span>
+            <span class="detail-value status-completed">Completado</span>
+          </div>
+        </div>
+
+        <div class="modal-share">
+          <h4>Compartir Proyecto</h4>
+          <div class="share-buttons">
+            <button class="share-btn linkedin" data-platform="linkedin" title="Compartir en LinkedIn">
+              <span class="share-icon">💼</span>
+            </button>
+            <button class="share-btn instagram" data-platform="instagram" title="Compartir en Instagram">
+              <span class="share-icon">📷</span>
+            </button>
+            <button class="share-btn whatsapp" data-platform="whatsapp" title="Compartir en WhatsApp">
+              <span class="share-icon">💬</span>
+            </button>
+            <button class="share-btn pdf" data-platform="pdf" title="Generar PDF">
+              <span class="share-icon">📄</span>
+            </button>
+          </div>
         </div>
 
         <div class="modal-actions">
           <a href="/project/architecture" class="modal-link primary">
-            <span>Ver Proyecto</span>
+            <span>Ver Proyecto Completo</span>
             <span class="link-icon">→</span>
           </a>
         </div>
@@ -887,10 +971,21 @@ import Footer from '../components/Footer.astro';
     </div>
   </div>
 
-  <div id="uxModal" class="project-modal">
+  <div id="uxModal" class="project-modal" data-index="4">
     <div class="modal-overlay"></div>
     <div class="modal-content">
+      <!-- Navigation Arrows -->
+      <button class="modal-nav modal-nav-prev" data-direction="prev">
+        <span class="nav-arrow">‹</span>
+      </button>
+      <button class="modal-nav modal-nav-next" data-direction="next">
+        <span class="nav-arrow">›</span>
+      </button>
+
       <button class="modal-close">&times;</button>
+      <button class="modal-expand" title="Expandir para página completa">
+        <span class="expand-icon">⛶</span>
+      </button>
 
       <div class="modal-header">
         <div class="modal-category">Projetos pessoais</div>
@@ -923,6 +1018,18 @@ import Footer from '../components/Footer.astro';
           </ul>
         </div>
 
+        <div class="modal-tags">
+          <h4>Tags del Proyecto</h4>
+          <div class="tags-container">
+            <span class="tag-pill">UX Design</span>
+            <span class="tag-pill">User Research</span>
+            <span class="tag-pill">UI/UX</span>
+            <span class="tag-pill">Prototyping</span>
+            <span class="tag-pill">Usability</span>
+            <span class="tag-pill">Design Systems</span>
+          </div>
+        </div>
+
         <div class="modal-details">
           <div class="detail-item">
             <span class="detail-label">Tecnologías:</span>
@@ -942,11 +1049,33 @@ import Footer from '../components/Footer.astro';
             <span class="detail-label">Equipo:</span>
             <span class="detail-value">3 UX designers</span>
           </div>
+          <div class="detail-item">
+            <span class="detail-label">Estado:</span>
+            <span class="detail-value status-completed">Completado</span>
+          </div>
+        </div>
+
+        <div class="modal-share">
+          <h4>Compartir Proyecto</h4>
+          <div class="share-buttons">
+            <button class="share-btn linkedin" data-platform="linkedin" title="Compartir en LinkedIn">
+              <span class="share-icon">💼</span>
+            </button>
+            <button class="share-btn instagram" data-platform="instagram" title="Compartir en Instagram">
+              <span class="share-icon">📷</span>
+            </button>
+            <button class="share-btn whatsapp" data-platform="whatsapp" title="Compartir en WhatsApp">
+              <span class="share-icon">💬</span>
+            </button>
+            <button class="share-btn pdf" data-platform="pdf" title="Generar PDF">
+              <span class="share-icon">📄</span>
+            </button>
+          </div>
         </div>
 
         <div class="modal-actions">
           <a href="/project/ux-design" class="modal-link primary">
-            <span>Ver Proyecto</span>
+            <span>Ver Proyecto Completo</span>
             <span class="link-icon">→</span>
           </a>
         </div>
@@ -954,10 +1083,21 @@ import Footer from '../components/Footer.astro';
     </div>
   </div>
 
-  <div id="aiModal" class="project-modal">
+  <div id="aiModal" class="project-modal" data-index="5">
     <div class="modal-overlay"></div>
     <div class="modal-content">
+      <!-- Navigation Arrows -->
+      <button class="modal-nav modal-nav-prev" data-direction="prev">
+        <span class="nav-arrow">‹</span>
+      </button>
+      <button class="modal-nav modal-nav-next" data-direction="next">
+        <span class="nav-arrow">›</span>
+      </button>
+
       <button class="modal-close">&times;</button>
+      <button class="modal-expand" title="Expandir para página completa">
+        <span class="expand-icon">⛶</span>
+      </button>
 
       <div class="modal-header">
         <div class="modal-category">Artigos publicados</div>
@@ -992,6 +1132,30 @@ import Footer from '../components/Footer.astro';
           <p>This project resulted in two published papers in top-tier AI conferences and contributed to the development of industry standards for recommendation systems.</p>
         </div>
 
+        <div class="modal-tags">
+          <h4>Tags del Proyecto</h4>
+          <div class="tags-container">
+            <span class="tag-pill">Security</span>
+            <span class="tag-pill">OWASP</span>
+            <span class="tag-pill">Auditoría</span>
+            <span class="tag-pill">Compliance</span>
+            <span class="tag-pill">Cybersecurity</span>
+            <span class="tag-pill">Risk Assessment</span>
+          </div>
+        </div>
+
+        <div class="modal-tags">
+          <h4>Tags del Proyecto</h4>
+          <div class="tags-container">
+            <span class="tag-pill">AI/ML</span>
+            <span class="tag-pill">Machine Learning</span>
+            <span class="tag-pill">Recommendation System</span>
+            <span class="tag-pill">Python</span>
+            <span class="tag-pill">TensorFlow</span>
+            <span class="tag-pill">Data Science</span>
+          </div>
+        </div>
+
         <div class="modal-details">
           <div class="detail-item">
             <span class="detail-label">Tecnologías:</span>
@@ -1011,11 +1175,33 @@ import Footer from '../components/Footer.astro';
             <span class="detail-label">Equipo:</span>
             <span class="detail-value">5 ML engineers</span>
           </div>
+          <div class="detail-item">
+            <span class="detail-label">Estado:</span>
+            <span class="detail-value status-completed">Completado</span>
+          </div>
+        </div>
+
+        <div class="modal-share">
+          <h4>Compartir Proyecto</h4>
+          <div class="share-buttons">
+            <button class="share-btn linkedin" data-platform="linkedin" title="Compartir en LinkedIn">
+              <span class="share-icon">💼</span>
+            </button>
+            <button class="share-btn instagram" data-platform="instagram" title="Compartir en Instagram">
+              <span class="share-icon">📷</span>
+            </button>
+            <button class="share-btn whatsapp" data-platform="whatsapp" title="Compartir en WhatsApp">
+              <span class="share-icon">💬</span>
+            </button>
+            <button class="share-btn pdf" data-platform="pdf" title="Generar PDF">
+              <span class="share-icon">📄</span>
+            </button>
+          </div>
         </div>
 
         <div class="modal-actions">
           <a href="/project/ai-ml" class="modal-link primary">
-            <span>Ver Proyecto</span>
+            <span>Ver Proyecto Completo</span>
             <span class="link-icon">→</span>
           </a>
         </div>
@@ -1844,22 +2030,20 @@ import Footer from '../components/Footer.astro';
   .share-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 0.5rem;
+    justify-content: center;
   }
 
   .share-btn {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.2rem;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
     border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 0.85rem;
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
@@ -1889,7 +2073,7 @@ import Footer from '../components/Footer.astro';
   }
 
   .share-icon {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   /* Modal Responsive */
