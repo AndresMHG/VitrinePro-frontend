@@ -50,14 +50,16 @@ O GitHub Pages serve automaticamente da pasta `docs/` quando configurado.
 ### Deploy Manual
 
 ```bash
-# Build do projeto
+# Build do projeto localmente
 npm run build
 
-# Commit e push das mudanças
+# Commit e push das mudanças (incluindo pasta docs/)
 git add .
 git commit -m "Deploy to GitHub Pages"
 git push origin main
 ```
+
+**Importante**: Para el método docs folder, necesitas hacer build localmente y commitear la carpeta `docs/` generada.
 
 ### Solução de Problemas (404 Error)
 
