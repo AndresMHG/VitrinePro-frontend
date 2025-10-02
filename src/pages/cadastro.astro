@@ -44,9 +44,10 @@ import Footer from '../components/Footer.astro';
 
             <div class="form-options">
               <label class="checkbox-label">
-                <input type="checkbox" name="terms" required>
-                <span class="checkmark"></span>
-                Aceito os <a href="#" class="terms-link">Termos de Uso</a> e <a href="#" class="terms-link">Política de Privacidade</a>
+                <input type="checkbox" name="terms" required class="terms-checkbox">
+                <span class="checkbox-text">
+                  Aceito os <a href="#" class="terms-link">Termos de Uso</a> e <a href="#" class="terms-link">Política de Privacidade</a>
+                </span>
               </label>
             </div>
 
@@ -184,12 +185,21 @@ import Footer from '../components/Footer.astro';
   color: #374151;
   cursor: pointer;
   line-height: 1.4;
+  gap: 0.75rem;
 }
 
-.checkbox-label input[type="checkbox"] {
-  margin-right: 0.5rem;
-  margin-top: 0.125rem;
+.checkbox-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.terms-checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 0;
   flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #0A66C2;
 }
 
 .terms-link {
@@ -372,6 +382,11 @@ import Footer from '../components/Footer.astro';
   .checkbox-label {
     font-size: 0.85rem;
   }
+
+  .terms-checkbox {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -421,6 +436,11 @@ import Footer from '../components/Footer.astro';
   .checkbox-label {
     font-size: 0.8rem;
   }
+
+  .terms-checkbox {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -454,6 +474,11 @@ import Footer from '../components/Footer.astro';
 
   .checkbox-label {
     font-size: 0.75rem;
+  }
+
+  .terms-checkbox {
+    width: 14px;
+    height: 14px;
   }
 }
 </style>
