@@ -43,7 +43,9 @@ O deploy acontece automaticamente quando você faz push para a branch `main`. O 
 
 - Instalar dependências
 - Fazer build do projeto
-- Publicar na pasta `docs/`
+- Gerar arquivos na pasta `docs/`
+
+O GitHub Pages serve automaticamente da pasta `docs/` quando configurado.
 
 ### Deploy Manual
 
