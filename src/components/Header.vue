@@ -59,7 +59,7 @@
       </svg>
     </div>
     <div class="login">
-      <a href="/login" class="login-text">Iniciar sesión</a>
+      <a href="/VitrinePro-frontend/login" class="login-text">Iniciar sesión</a>
     </div>
   </header>
 </template>
