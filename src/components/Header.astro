@@ -6,7 +6,9 @@ import { Font } from 'astro:assets';
 <header class="header">
   <div class="header-content">
     <div class="logo">
-      <img src="/icon.svg" alt="VitrinePro Logo" class="logo-img" draggable="false" />
+      <a href="/" class="logo-link">
+        <img src="/icon.svg" alt="VitrinePro Logo" class="logo-img" draggable="false" />
+      </a>
     </div>
     <div class="actions">
       <a href="/login" class="login-link">Entrar</a>
@@ -44,6 +46,11 @@ body {
 .logo {
   display: flex;
   align-items: center;
+}
+
+.logo-link {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .logo-img {
