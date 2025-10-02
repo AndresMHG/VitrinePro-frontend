@@ -220,6 +220,10 @@ const projectData = {
 };
 
 const project = projectData[id as keyof typeof projectData];
+
+if (!project) {
+  return Astro.redirect('/profile');
+}
 ---
 
 <Layout>
