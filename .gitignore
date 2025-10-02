@@ -1,6 +1,6 @@
 # build output
 dist/
-# docs/ - Uncomment if not using GitHub Pages docs folder method
+docs/
 
 # generated types
 .astro/

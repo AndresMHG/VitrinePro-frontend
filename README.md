@@ -34,8 +34,10 @@ Este projeto está configurado para deploy automático no GitHub Pages:
 
 1. **No GitHub**: Vá para seu repositório → Settings → Pages
 2. **Source**: Selecione "Deploy from a branch"
-3. **Branch**: Selecione `main` e pasta `/docs`
+3. **Branch**: Selecione `gh-pages` e pasta `/(root)`
 4. **Salve as configurações**
+
+**Nota**: Agora usa a branch `gh-pages` em vez da pasta `docs/`
 
 ### Deploy Automático
 
