@@ -6,7 +6,8 @@
     "dev": "astro dev --port 3000",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && echo 'Build complete. Push to main branch to deploy.'"
   },
   "dependencies": {
     "@astrojs/vue": "^5.1.1",

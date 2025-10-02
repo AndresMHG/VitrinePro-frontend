@@ -12,5 +12,7 @@ export default defineConfig({
           cssVariable: "--font-inter"
       }]
   },
-  integrations: [vue()]
+  integrations: [vue()],
+  output: 'static',
+  outDir: './docs'
 });
