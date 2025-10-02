@@ -57,6 +57,19 @@ git commit -m "Deploy to GitHub Pages"
 git push origin main
 ```
 
+### Solução de Problemas (404 Error)
+
+Se você receber um erro 404, verifique:
+
+1. **Branch correta**: Certifique-se que está fazendo push para `main` ou `master`
+2. **Pasta docs**: No GitHub Pages settings, selecione a pasta `/docs`
+3. **Base path**: Se seu repositório não é `username.github.io`, adicione no `astro.config.mjs`:
+   ```js
+   base: '/nome-do-repositorio/',
+   ```
+4. **Workflow**: Verifique se o GitHub Actions executou com sucesso
+5. **Build**: Certifique-se que `npm run build` gera arquivos na pasta `docs/`
+
 ## 📁 Estrutura do Projeto
 
 ```
