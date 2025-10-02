@@ -15,6 +15,5 @@ export default defineConfig({
   integrations: [vue()],
   output: 'static',
   outDir: './docs',
-  // Uncomment and set your repository name if deploying to username.github.io/repository-name
-  // base: '/your-repository-name/',
+  base: '/VitrinePro-frontend/',
 });
