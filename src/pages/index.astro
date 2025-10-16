@@ -204,6 +204,16 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
+:root{
+  --vp-primary: #0A66C2;
+  --vp-secondary: #004182;
+  --vp-gradient: linear-gradient(135deg, var(--vp-primary), var(--vp-secondary));
+  --vp-bg: #ffffff;
+  --vp-muted: #f5f7fa;
+  --vp-border: #e5e7eb;
+  --vp-text: #111827;
+  --vp-subtext:#6b7280;
+}
 .main-content {
   min-height: calc(100vh - 140px);
 }
@@ -211,7 +221,7 @@ import Footer from '../components/Footer.astro';
 /* Problemas Section */
 .problems-section {
   padding: 40px 0;
-  background: #fff;
+  background: var(--vp-bg);
 }
 
 .container {
@@ -223,7 +233,7 @@ import Footer from '../components/Footer.astro';
 .section-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--vp-text);
   text-align: center;
   margin-bottom: 3rem;
   position: relative;
@@ -237,7 +247,7 @@ import Footer from '../components/Footer.astro';
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(135deg, #0A66C2, #004182);
+  background: var(--vp-gradient);
   border-radius: 2px;
 }
 
@@ -248,12 +258,12 @@ import Footer from '../components/Footer.astro';
 }
 
 .problem-card {
-  background: #fff;
+  background: var(--vp-bg);
   position: relative;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  border: 1px solid var(--vp-border);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
@@ -271,12 +281,12 @@ import Footer from '../components/Footer.astro';
 .problem-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--vp-text);
   margin-bottom: 1rem;
 }
 
 .problem-card p {
-  color: #64748b;
+  color: var(--vp-subtext);
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -284,7 +294,7 @@ import Footer from '../components/Footer.astro';
 /* Benefits Section */
 .benefits-section {
   padding: 40px 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: var(--vp-muted);
 }
 
 .benefits-grid {
@@ -294,12 +304,12 @@ import Footer from '../components/Footer.astro';
 }
 
 .benefit-item {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--vp-bg);
   backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--vp-border);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -316,12 +326,12 @@ import Footer from '../components/Footer.astro';
 .benefit-item h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--vp-text);
   margin-bottom: 0.5rem;
 }
 
 .benefit-item p {
-  color: #64748b;
+  color: var(--vp-subtext);
   line-height: 1.5;
   font-size: 0.9rem;
 }
@@ -329,7 +339,7 @@ import Footer from '../components/Footer.astro';
 /* Examples Section */
 .examples-section {
   padding: 40px 0;
-  background: #fff;
+  background: var(--vp-bg);
 }
 
 .examples-grid {
@@ -339,12 +349,12 @@ import Footer from '../components/Footer.astro';
 }
 
 .example-card {
-  background: #fff;
+  background: var(--vp-bg);
   position: relative;
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  border: 1px solid var(--vp-border);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -371,18 +381,18 @@ import Footer from '../components/Footer.astro';
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #0A66C2;
+  border: 3px solid var(--vp-primary);
 }
 
 .example-info h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--vp-text);
   margin: 0 0 0.25rem 0;
 }
 
 .example-info p {
-  color: #64748b;
+  color: var(--vp-subtext);
   font-size: 0.9rem;
   margin: 0;
 }
@@ -392,8 +402,8 @@ import Footer from '../components/Footer.astro';
   justify-content: space-between;
   margin-bottom: 1.5rem;
   padding: 1rem 0;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
+  border-top: 1px solid var(--vp-border);
+  border-bottom: 1px solid var(--vp-border);
 }
 
 .stat {
@@ -404,12 +414,12 @@ import Footer from '../components/Footer.astro';
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0A66C2;
+  color: var(--vp-primary);
 }
 
 .stat-label {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--vp-subtext);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -422,7 +432,7 @@ import Footer from '../components/Footer.astro';
 
 .skill-tag {
   background: rgba(10, 102, 194, 0.1);
-  color: #0A66C2;
+  color: var(--vp-primary);
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   font-size: 0.8rem;
@@ -432,7 +442,7 @@ import Footer from '../components/Footer.astro';
 /* Final CTA Section */
 .final-cta-section {
   padding: 40px 0;
-  background: linear-gradient(135deg, #0A66C2 0%, #004182 100%);
+  background: var(--vp-gradient);
   color: white;
   text-align: center;
 }
@@ -458,8 +468,8 @@ import Footer from '../components/Footer.astro';
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: white;
-  color: #0A66C2;
+  background: var(--vp-bg);
+  color: var(--vp-primary);
   text-decoration: none;
   padding: 16px 32px;
   border-radius: 50px;
