@@ -12,7 +12,7 @@ import Footer from '../components/Footer.astro';
         <div class="register-card">
           <div class="register-header">
             <h1>Criar sua conta</h1>
-            <p>Junte-se a milhares de profissionais e crie sua vitrine profissional.</p>
+            <!-- <p>Junte-se a milhares de profissionais e crie sua vitrine profissional.</p> -->
           </div>
 
           <form class="register-form">
@@ -20,10 +20,6 @@ import Footer from '../components/Footer.astro';
               <div class="form-group">
                 <label for="firstName">Nome</label>
                 <input type="text" id="firstName" name="firstName" required placeholder="Seu nome">
-              </div>
-              <div class="form-group">
-                <label for="lastName">Sobrenome</label>
-                <input type="text" id="lastName" name="lastName" required placeholder="Seu sobrenome">
               </div>
             </div>
 
@@ -42,19 +38,19 @@ import Footer from '../components/Footer.astro';
               <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirme sua senha">
             </div>
 
-            <div class="form-options">
+            <!-- <div class="form-options">
               <label class="checkbox-label">
                 <input type="checkbox" name="terms" required class="terms-checkbox">
                 <span class="checkbox-text">
                   Aceito os <a href="#" class="terms-link">Termos de Uso</a> e <a href="#" class="terms-link">Política de Privacidade</a>
                 </span>
               </label>
-            </div>
+            </div> -->
 
             <button type="submit" class="register-btn">Criar Conta</button>
           </form>
 
-          <div class="divider">
+          <!-- <div class="divider">
             <span>ou</span>
           </div>
 
@@ -76,7 +72,7 @@ import Footer from '../components/Footer.astro';
               Cadastrar com LinkedIn
             </button>
           </div>
-
+ -->
           <div class="login-link">
             <p>Já tem uma conta? <a href="/VitrinePro-frontend/login">Faça login</a></p>
           </div>
@@ -319,7 +315,7 @@ import Footer from '../components/Footer.astro';
 /* Responsive */
 @media (max-width: 1200px) {
   .register-card {
-    max-width: 500px;
+    width: 500px;
     padding: 2.75rem;
   }
 
