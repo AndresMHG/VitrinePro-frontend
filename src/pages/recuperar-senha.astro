@@ -2,275 +2,71 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AuthLayout from '../components/auth/AuthLayout.astro';
+import AuthCard from '../components/auth/AuthCard.astro';
+import FormInput from '../components/common/FormInput.astro';
+import Button from '../components/common/Button.astro';
 ---
 
-<Layout>
+<Layout title="Recuperar Contraseña - VitrinePro">
   <Header />
-  <main class="main-content">
-    <section class="recovery-section">
-      <div class="container">
-        <div class="recovery-card">
-          <div class="recovery-header">
-            <h1>Recuperar Senha</h1>
-            <p>Digite seu e-mail e enviaremos instruções para redefinir sua senha.</p>
-          </div>
 
-          <form class="recovery-form">
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required placeholder="seu@email.com">
-            </div>
+  <AuthLayout>
+    <AuthCard title="Recuperar Contraseña">
+      <form method="POST" class="recovery-form">
+        <FormInput
+          id="email"
+          name="email"
+          type="email"
+          label="Correo Electrónico"
+          placeholder="tu@email.com"
+          required
+        />
+        <Button type="submit" variant="primary" fullWidth>
+          Enviar Instrucciones
+        </Button>
+      </form>
 
-            <button type="submit" class="recovery-btn">Enviar Instruções</button>
-          </form>
-
-          <div class="back-to-login">
-            <p>Lembrou sua senha? <a href="/VitrinePro-frontend/login">Voltar ao login</a></p>
-          </div>
-        </div>
+      <div class="recovery-footer">
+        <p>
+          ¿Recordaste tu contraseña?
+          <a href="/login">Volver al Login</a>
+        </p>
       </div>
-    </section>
-  </main>
+    </AuthCard>
+  </AuthLayout>
+
   <Footer />
 </Layout>
 
 <style>
-.main-content {
-  min-height: calc(100vh - 140px);
-  background:
-    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
-    #f5f7fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-
-.recovery-section {
-  padding: 0;
-}
-
-.recovery-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  padding: 3rem;
-  max-width: 480px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.recovery-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.recovery-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1a202c;
-  margin-bottom: 0.5rem;
-}
-
-.recovery-header p {
-  color: #64748b;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.recovery-form {
-  margin-bottom: 2rem;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.5rem;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #0A66C2;
-  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
-}
-
-.recovery-btn {
-  width: 100%;
-  background: #0A66C2;
-  color: white;
-  border: none;
-  padding: 0.875rem 1rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.recovery-btn:hover {
-  background: #004182;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
-}
-
-.back-to-login {
-  text-align: center;
-}
-
-.back-to-login p {
-  color: #64748b;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.back-to-login a {
-  color: #0A66C2;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.back-to-login a:hover {
-  color: #004182;
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-  .recovery-card {
-    max-width: 460px;
-    padding: 2.75rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .main-content {
-    padding: 20px 0;
+  .recovery-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
-  .recovery-card {
-    max-width: 440px;
-    padding: 2.5rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .recovery-card {
-    max-width: 420px;
-    padding: 2.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-content {
-    padding: 20px 0;
-    min-height: calc(100vh - 120px);
+  .recovery-footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
   }
 
-  .recovery-card {
-    padding: 2rem;
-    margin: 0 20px;
-    max-width: 380px;
-  }
-
-  .recovery-header h1 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .recovery-card {
-    padding: 1.75rem;
-    margin: 0 15px;
-    max-width: 100%;
-  }
-
-  .recovery-header h1 {
-    font-size: 1.4rem;
-  }
-
-  .recovery-header p {
+  .recovery-footer p {
+    color: var(--text-secondary);
     font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-content {
-    padding: 10px 15px;
-    min-height: calc(100vh - 100px);
-  }
-
-  .recovery-card {
-    padding: 1.5rem;
     margin: 0;
-    max-width: 100%;
-    width: calc(100vw - 30px);
   }
 
-  .recovery-header h1 {
-    font-size: 1.3rem;
+  .recovery-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-base);
   }
 
-  .form-group input {
-    padding: 0.75rem 0.875rem;
-    font-size: 0.9rem;
+  .recovery-footer a:hover {
+    color: var(--primary-dark);
   }
-
-  .recovery-btn {
-    padding: 0.75rem 0.875rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .main-content {
-    padding: 10px 10px;
-  }
-
-  .recovery-card {
-    padding: 1.25rem;
-    width: calc(100vw - 20px);
-  }
-
-  .recovery-header h1 {
-    font-size: 1.2rem;
-  }
-
-  .recovery-header p {
-    font-size: 0.85rem;
-  }
-
-  .form-group input {
-    padding: 0.7rem 0.8rem;
-    font-size: 0.85rem;
-  }
-
-  .recovery-btn {
-    padding: 0.7rem 0.8rem;
-    font-size: 0.85rem;
-  }
-
-  .back-to-login p {
-    font-size: 0.8rem;
-  }
-}
 </style>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  variant?: 'default' | 'outlined';
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  class: className = ''
+} = Astro.props;
+
+const cardClass = `card card--${variant}`;
+---
+
+<div class={`${cardClass} ${className}`.trim()}>
+  <slot />
+</div>
+
+<style is:global>
+  .card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .card--default {
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card--outlined {
+    border: 1px solid var(--border);
+    box-shadow: none;
+  }
+</style>

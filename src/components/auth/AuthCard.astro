@@ -1,0 +1,74 @@
+---
+import Button from '../common/Button.astro';
+import FormInput from '../common/FormInput.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  submitText?: string;
+  class?: string;
+}
+
+const {
+  title,
+  description,
+  submitText = 'Enviar',
+  class: className = ''
+} = Astro.props;
+---
+
+<div class={`auth-card ${className}`.trim()}>
+  <div class="auth-header">
+    <h1 class="auth-title">{title}</h1>
+    {description && <p class="auth-description">{description}</p>}
+  </div>
+
+  <form class="auth-form" data-form="auth">
+    <slot />
+  </form>
+</div>
+
+<style>
+  .auth-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-xl);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .auth-header {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .auth-title {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .auth-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 480px) {
+    .auth-card {
+      padding: var(--space-lg);
+    }
+
+    .auth-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+interface Props {
+  items: Array<{
+    icon?: string;
+    title: string;
+    description: string;
+  }>;
+  cols?: 1 | 2 | 3 | 4;
+  class?: string;
+}
+
+const {
+  items,
+  cols = 3,
+  class: className = ''
+} = Astro.props;
+---
+
+<div class={`features-grid features-grid--${cols} ${className}`.trim()}>
+  {items.map((item) => (
+    <div class="feature-card">
+      {item.icon && (
+        <div class="feature-icon">
+          {item.icon}
+        </div>
+      )}
+      <h3 class="feature-title">{item.title}</h3>
+      <p class="feature-description">{item.description}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .features-grid {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .features-grid--1 {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .features-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    background: var(--bg-light);
+    transition: all var(--transition-base);
+  }
+
+  .feature-card:hover {
+    background: var(--bg-muted);
+    transform: translateY(-4px);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid--3,
+    .features-grid--4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card {
+      padding: var(--space-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .features-grid--2,
+    .features-grid--3,
+    .features-grid--4 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

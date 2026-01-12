@@ -1,0 +1,77 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  placeholder?: string;
+  required?: boolean;
+  error?: string;
+  disabled?: boolean;
+  rows?: number;
+  class?: string;
+}
+
+const {
+  id,
+  label,
+  placeholder,
+  required = false,
+  error,
+  disabled = false,
+  rows = 4,
+  class: className = ''
+} = Astro.props;
+---
+
+<div class={`form-group ${error ? 'has-error' : ''} ${className}`.trim()}>
+  <label for={id} class="form-label">
+    {label}
+    {required && <span class="required">*</span>}
+  </label>
+  <textarea
+    id={id}
+    placeholder={placeholder}
+    disabled={disabled}
+    required={required}
+    rows={rows}
+    class="form-textarea"
+  ></textarea>
+  {error && <span class="form-error">{error}</span>}
+</div>
+
+<style is:global>
+  .form-textarea {
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: white;
+    transition: all var(--transition-base);
+    resize: vertical;
+  }
+
+  .form-textarea:hover:not(:disabled) {
+    border-color: var(--primary);
+  }
+
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+  }
+
+  .form-textarea:disabled {
+    background: var(--bg-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .form-group.has-error .form-textarea {
+    border-color: #ef4444;
+  }
+
+  .form-group.has-error .form-textarea:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+</style>

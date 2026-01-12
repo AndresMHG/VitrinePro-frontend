@@ -1,0 +1,112 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  fullWidth?: boolean;
+  disabled?: boolean;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  fullWidth = false,
+  disabled = false,
+  href,
+  type = 'button',
+  class: className = ''
+} = Astro.props;
+
+const baseClass = 'btn';
+const variantClass = `btn--${variant}`;
+const sizeClass = `btn--${size}`;
+const fullWidthClass = fullWidth ? 'btn--full' : '';
+
+const buttonClass = [baseClass, variantClass, sizeClass, fullWidthClass, className]
+  .filter(Boolean)
+  .join(' ');
+---
+
+{href ? (
+  <a href={href} class={buttonClass} role="button">
+    <slot />
+  </a>
+) : (
+  <button type={type} class={buttonClass} disabled={disabled}>
+    <slot />
+  </button>
+)}
+
+<style is:global>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Sizes */
+  .btn--sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .btn--md {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+
+  .btn--lg {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  /* Variants */
+  .btn--primary {
+    background: var(--gradient);
+    color: white;
+  }
+
+  .btn--primary:hover:not(:disabled) {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+
+  .btn--secondary {
+    background: white;
+    color: var(--primary);
+    border-color: #bcd5f1;
+  }
+
+  .btn--secondary:hover:not(:disabled) {
+    background: var(--bg-light);
+  }
+
+  .btn--ghost {
+    background: var(--bg-light);
+    color: var(--text-primary);
+    border-color: var(--border);
+    text-align: center;
+  }
+
+  .btn--ghost:hover:not(:disabled) {
+    background: var(--bg-muted);
+  }
+
+  /* Full width */
+  .btn--full {
+    width: 100%;
+  }
+</style>

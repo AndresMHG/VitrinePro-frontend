@@ -1,0 +1,74 @@
+---
+import Button from '../common/Button.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const {
+  title,
+  description,
+  buttonText = 'Comenzar ahora',
+  buttonHref = '#',
+  variant = 'primary',
+  class: className = ''
+} = Astro.props;
+---
+
+<section class={`cta-section ${className}`.trim()}>
+  <div class="cta-content">
+    <h2 class="cta-title">{title}</h2>
+    {description && <p class="cta-description">{description}</p>}
+    <Button href={buttonHref} variant={variant}>{buttonText}</Button>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background: var(--gradient);
+    color: white;
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .cta-section {
+      padding: var(--space-lg);
+    }
+
+    .cta-title {
+      font-size: 1.5rem;
+    }
+
+    .cta-description {
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,135 @@
+---
+import Card from '../common/Card.astro';
+import Avatar from '../common/Avatar.astro';
+import Badge from '../common/Badge.astro';
+import Button from '../common/Button.astro';
+import SocialLink from '../common/SocialLink.astro';
+
+interface Props {
+  user: {
+    name: string;
+    avatar: string;
+    status?: 'pro' | 'verified' | 'online';
+    bio: string[];
+    website?: string;
+    social?: {
+      platform: string;
+      url: string;
+    }[];
+  };
+}
+
+const { user } = Astro.props;
+---
+
+<aside class="profile-sidebar">
+  <Card class="profile-card">
+    <div class="profile-card-content">
+      <Avatar
+        src={user.avatar}
+        alt={user.name}
+        size="md"
+        status={user.status}
+      />
+      
+      <h1 class="profile-name">{user.name}</h1>
+      
+      <ul class="profile-bio">
+        {user.bio.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
+      {user.website && (
+        <a href={user.website} class="profile-website" target="_blank" rel="noopener noreferrer">
+          {user.website}
+        </a>
+      )}
+
+      <div class="profile-social">
+        {user.social?.map((link) => (
+          <SocialLink
+            href={link.url}
+            label={link.platform}
+            icon={link.platform.toLowerCase()}
+          />
+        ))}
+      </div>
+
+      <div class="profile-actions">
+        <Button variant="primary">Seguir</Button>
+        <Button variant="secondary">Mensaje</Button>
+      </div>
+    </div>
+  </Card>
+</aside>
+
+<style>
+  .profile-sidebar {
+    position: relative;
+    top: -25px;
+    height: fit-content;
+  }
+
+  .profile-card {
+    padding: var(--space-md);
+  }
+
+  .profile-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+
+  .profile-bio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .profile-website {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+  }
+
+  .profile-website:hover {
+    text-decoration: underline;
+  }
+
+  .profile-social {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .profile-actions {
+    display: grid;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    .profile-sidebar {
+      top: 0;
+    }
+
+    .profile-name {
+      font-size: 1.25rem;
+    }
+  }
+</style>

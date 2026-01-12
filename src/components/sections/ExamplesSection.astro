@@ -1,0 +1,228 @@
+---
+interface ExampleProfile {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  views: string;
+  projects: string;
+  experience: string;
+  skills: string[];
+  link: string;
+}
+
+interface Props {
+  examples: ExampleProfile[];
+  title?: string;
+}
+
+const {
+  examples,
+  title = 'Vitrines de Exemplo'
+} = Astro.props;
+---
+
+<section class="examples-section">
+  <div class="container">
+    <h2 class="section-title">{title}</h2>
+    <div class="examples-grid">
+      {examples.map(example => (
+        <a href={example.link} class="example-card-link">
+          <div class="example-card">
+            <div class="example-header">
+              <img src={example.avatar} alt={example.name} class="example-avatar" />
+              <div class="example-info">
+                <h3>{example.name}</h3>
+                <p>{example.role}</p>
+              </div>
+            </div>
+            <div class="example-stats">
+              <div class="stat">
+                <span class="stat-number">{example.views}</span>
+                <span class="stat-label">Visualizações</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">{example.projects}</span>
+                <span class="stat-label">Projetos</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">{example.experience}</span>
+                <span class="stat-label">Anos Exp.</span>
+              </div>
+            </div>
+            <div class="example-skills">
+              {example.skills.map(skill => (
+                <span class="skill-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .examples-section {
+    padding: 40px 0;
+    background: var(--vp-bg, #ffffff);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--vp-text, #111827);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--vp-primary, #0A66C2), var(--vp-secondary, #004182));
+    border-radius: 2px;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .example-card-link {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+
+  .example-card {
+    background: var(--vp-bg, #ffffff);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--vp-border, #e5e7eb);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .example-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .example-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .example-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--vp-primary, #0A66C2);
+    flex-shrink: 0;
+  }
+
+  .example-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--vp-text, #111827);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .example-info p {
+    color: var(--vp-subtext, #6b7280);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .example-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--vp-border, #e5e7eb);
+    border-bottom: 1px solid var(--vp-border, #e5e7eb);
+  }
+
+  .stat {
+    text-align: center;
+    flex: 1;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--vp-primary, #0A66C2);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--vp-subtext, #6b7280);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .example-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: rgba(10, 102, 194, 0.1);
+    color: var(--vp-primary, #0A66C2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .examples-section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .examples-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .example-card {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .examples-section {
+      padding: 40px 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .example-card {
+      padding: 1.5rem;
+    }
+  }
+</style>

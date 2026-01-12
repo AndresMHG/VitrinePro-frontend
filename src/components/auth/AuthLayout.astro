@@ -1,0 +1,35 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<section class={`auth-layout ${className}`.trim()}>
+  <div class="auth-container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .auth-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #f0f7ff 100%);
+    padding: var(--space-lg);
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    .auth-layout {
+      padding: var(--space-md);
+    }
+  }
+</style>

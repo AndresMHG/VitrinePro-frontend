@@ -1,0 +1,76 @@
+---
+interface Props {
+  tabs: {
+    id: string;
+    label: string;
+  }[];
+  activeTab?: string;
+}
+
+const { tabs, activeTab = tabs[0]?.id || 'all' } = Astro.props;
+---
+
+<div class="profile-tabs">
+  {tabs.map((tab) => (
+    <button
+      class={`profile-tab ${tab.id === activeTab ? 'active' : ''}`}
+      data-tab={tab.id}
+    >
+      {tab.label}
+    </button>
+  ))}
+</div>
+
+<style>
+  .profile-tabs {
+    display: flex;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .profile-tab {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 0.25rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition-base);
+  }
+
+  .profile-tab:hover {
+    color: var(--text-primary);
+  }
+
+  .profile-tab.active {
+    color: var(--text-primary);
+  }
+
+  .profile-tab.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 3px 3px 0 0;
+  }
+
+  @media (max-width: 640px) {
+    .profile-tabs {
+      gap: 0.75rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    .profile-tab {
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+  }
+</style>

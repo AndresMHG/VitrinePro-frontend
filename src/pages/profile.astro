@@ -2,276 +2,75 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// Components
+import ProfileLayout from '../components/profile/ProfileLayout.astro';
+import ProfileCover from '../components/profile/ProfileCover.astro';
+import ProfileSidebar from '../components/profile/ProfileSidebar.astro';
+import ProfileTabs from '../components/profile/ProfileTabs.astro';
+import ProjectGrid from '../components/profile/ProjectGrid.astro';
+
+// Data
+import { profileData } from '../data/profile';
 ---
 
 <Layout>
   <Header />
-  <main class="profile-main">
-    <section class="cover">
-      <div class="cover-img" role="img" aria-label="Cover image"></div>
-    </section>
-
-    <section class="profile-wrap container">
-      <aside class="sidebar">
-        <div class="card identity">
-          <div class="avatar-wrap">
-            <img class="avatar" src="https://picsum.photos/id/1005/160/160" alt="User avatar" />
-            <span class="badge pro">PRO</span>
-          </div>
-          <h1 class="name">Janyne Azevedo</h1>
-          <ul class="meta">
-            <li>Disponible para freelance</li>
-            <li>Children's illustrator</li>
-            <li>Freelancer</li>
-            <li>Natal, Brazil</li>
-            <li><a href="#" class="link">janyneazevedo.com</a></li>
-          </ul>
-          <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-            <a href="#" class="social-link" aria-label="Instagram">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.017 0C8.396 0 7.609.034 6.298.148 4.985.262 4.114.52 3.423.812c-.691.292-1.26.66-1.82 1.22C.043 2.592 0 3.16 0 3.85c0 .69.043 1.258.603 1.818.56.56 1.129.928 1.82 1.22.69.292 1.561.55 2.874.664C7.609 7.666 8.396 7.7 12.017 7.7s4.408-.034 5.719-.148c1.313-.114 2.184-.372 2.875-.664.691-.292 1.26-.66 1.82-1.22.56-.56 1.129-.928 1.82-1.22.69-.292 1.561-.55 2.874-.664C16.425.034 15.638 0 12.017 0zM12.017 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-            <a href="#" class="social-link" aria-label="LinkedIn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-            <a href="#" class="social-link" aria-label="CV/Resume">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14,2 14,8 20,8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10,9 9,9 8,9"></polyline>
-              </svg>
-            </a>
-            <a href="#" class="social-link" aria-label="Certificados y Cursos">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-              </svg>
-            </a>
-          </div>
-          <div class="actions">
-            <button class="btn primary">Seguir</button>
-            <button class="btn secondary">Mensaje</button>
-          </div>
-        </div>
-      </aside>
-
-      <section class="content">
-        <div class="tabs">
-          <button class="tab active" data-tab="work">Todos</button>
-          <button class="tab" data-tab="boards">Projetos </button>
-          <button class="tab" data-tab="reviews">Articulos </button>
-          <button class="tab" data-tab="">Eventos </button>
-        </div>
-        <div class="grid">
-          <article class="card project" data-category="proyectos">
-            <div class="thumb">
-              <img src="https://picsum.photos/id/1015/800/600" alt="Swans" />
-              <div class="pill">Para ti</div>
-            </div>
-            <div class="p-meta">
-              <h3 class="p-title">Swans</h3>
-              <p class="p-author">Janyne Azevedo</p>
-              <div class="p-stats">
-                <span class="s"><span class="i">❤️</span> 6</span>
-                <span class="s"><span class="i">👁️</span> 23</span>
-              </div>
-            </div>
-          </article>
-          {
-            (() => {
-                const projects = [
-                { src: 'https://picsum.photos/id/1011/800/600', alt: 'Mountains', title: 'Cumbres', author: 'Janyne Azevedo', likes: 34, views: 210, category: 'proyectos' },
-                { src: 'https://picsum.photos/id/1013/800/600', alt: 'Forest path', title: 'Sendero', author: 'Janyne Azevedo', likes: 9, views: 48, category: 'ilustraciones' },
-                { src: 'https://picsum.photos/id/1014/800/600', alt: 'Sea waves', title: 'Olas', author: 'Janyne Azevedo', likes: 27, views: 134, category: 'proyectos' },
-                { src: 'https://picsum.photos/id/1016/800/600', alt: 'Desert', title: 'Dunas', author: 'Janyne Azevedo', likes: 6, views: 33, category: 'imagenes' },
-                { src: 'https://picsum.photos/id/1020/800/600', alt: 'Bridge', title: 'Puente antiguo', author: 'Janyne Azevedo', likes: 44, views: 302, category: 'proyectos' },
-                { src: 'https://picsum.photos/id/1024/800/600', alt: 'Horse', title: 'Caballo', author: 'Janyne Azevedo', likes: 12, views: 76, category: 'ilustraciones' },
-                { src: 'https://picsum.photos/id/1027/800/600', alt: 'Flowers', title: 'Ramillete', author: 'Janyne Azevedo', likes: 29, views: 150, category: 'imagenes' },
-                { src: 'https://picsum.photos/id/1031/800/600', alt: 'Night sky', title: 'Cielo nocturno', author: 'Janyne Azevedo', likes: 53, views: 410, category: 'proyectos' },
-                { src: 'https://picsum.photos/id/1043/800/600', alt: 'Lake', title: 'Lago sereno', author: 'Janyne Azevedo', likes: 21, views: 98, category: 'fotografia' },
-                { src: 'https://picsum.photos/id/1047/800/600', alt: 'Old book', title: 'Libros viejos', author: 'Janyne Azevedo', likes: 8, views: 41, category: 'ilustraciones' },
-                { src: 'https://picsum.photos/id/1050/800/600', alt: 'Farm field', title: 'Campo', author: 'Janyne Azevedo', likes: 22, views: 78, category: 'imagenes' }
-                ];
-
-              return projects.map((item) => (
-                <article class="card project" data-category={item.category}>
-                  <div class="thumb">
-                    <img src={item.src} alt={item.alt} />
-                  </div>
-                  <div class="p-meta">
-                    <h3 class="p-title">{item.title}</h3>
-                    <p class="p-author">{item.author}</p>
-                    <div class="p-stats">
-                      <span class="s"><span class="i">❤️</span> {item.likes}</span>
-                      <span class="s"><span class="i">👁️</span> {item.views}</span>
-                    </div>
-                  </div>
-                </article>
-              ));
-            })()
-          }
-
-        </div>
+  <ProfileLayout>
+    <ProfileCover />
+    <div class="container profile-wrap">
+      <ProfileSidebar user={profileData.user} />
+      <section class="profile-content">
+        <ProfileTabs tabs={profileData.tabs} />
+        <ProjectGrid projects={profileData.projects} />
       </section>
-    </section>
-  </main>
+    </div>
+  </ProfileLayout>
   <Footer />
 </Layout>
 
 <style>
-:root{
-  --vp-primary: #0A66C2;
-  --vp-secondary: #004182;
-  --vp-gradient: linear-gradient(135deg, var(--vp-primary), var(--vp-secondary));
-  --vp-bg: #ffffff;
-  --vp-muted: #f5f7fa;
-  --vp-border: #e5e7eb;
-  --vp-text: #111827;
-  --vp-subtext:#6b7280;
-}
-.container{margin:0 auto;padding:0 20px;}
-.profile-main{background:#fff;min-height:100vh;position:relative;}
-.profile-main::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);pointer-events:none;z-index:0;}
-/* Cover */
-.cover{background:#eef2f7;}
-.cover-img{height:180px;background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center;border-bottom:1px solid var(--vp-border);}
-/* Layout */
-.profile-wrap{display:grid;grid-template-columns:280px 1fr;gap:2rem;}
-.sidebar{position:relative;top:-25px;height:fit-content;}
-.card{background:#fff;border:1px solid var(--vp-border);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);}
-.identity{padding:1rem;}
-.avatar-wrap{position:relative;width:120px;height:120px;margin:-60px 0 .5rem 0;}
-.avatar{width:120px;height:120px;border-radius:50%;border:4px solid #fff;box-shadow:0 8px 22px rgba(0,0,0,.12);object-fit:cover;}
-.badge.pro{position:absolute;right:-6px;bottom:6px;background:var(--vp-gradient);color:#fff;font-size:.7rem;font-weight:700;padding:.25rem .5rem;border-radius:9999px;box-shadow:0 4px 10px rgba(0,0,0,.15);}
-.name{font-size:1.5rem;color:var(--vp-text);margin:.25rem 0 .75rem 0;}
-.meta{list-style:none;padding:0;margin:0 .25rem .75rem 0;display:grid;gap:.35rem;color:#475569;font-size:.95rem;}
-.link{color:var(--vp-primary);text-decoration:none}
-.link:hover{text-decoration:underline}
-.social-links{display:flex;gap:1rem;margin:.75rem 0;}
-.social-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#f8fafc;border:1px solid var(--vp-border);color:var(--vp-subtext);text-decoration:none;transition:.2s}
-.social-link:hover{background:var(--vp-primary);color:#fff;transform:translateY(-2px)}
-.actions{display:grid;gap:.5rem;margin:.75rem 0 1rem 0;}
-.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;padding:.6rem 1rem;font-weight:700;border:1px solid transparent;cursor:pointer;transition:.2s}
-.btn.primary{background:var(--vp-gradient);color:#fff}
-.btn.primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
-.btn.secondary{background:#fff;color:var(--vp-primary);border-color:#bcd5f1}
-.btn.secondary:hover{background:#f0f7ff}
-.btn.ghost{background:#f8fafc;color:#111827;border-color:#e5e7eb;text-align:center;text-decoration:none}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
-.stat{background:#f8fafc;border:1px solid #eef2f7;border-radius:12px;padding:.6rem;text-align:center}
-.num{display:block;font-weight:800;color:#111827;line-height:1}
-.label{font-size:.75rem;color:#64748b}
-/* content */
-.content{min-width:0;margin-top:12px; margin-bottom: 60px;}
-.tabs{display:flex;gap:1.25rem;border-bottom:1px solid var(--vp-border);margin-bottom:1rem}
-.tab{background:transparent;border:none;padding:.75rem .25rem;font-weight:700;color:#6b7280;cursor:pointer;position:relative}
-.tab.active{color:#111827}
-.tab.active::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--vp-gradient);border-radius:3px 3px 0 0}
-/* grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:1rem}
-.project{overflow:hidden;border-radius:16px}
-.project .thumb{height:220px;position:relative;overflow:hidden}
-.project img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.4,0,.2,1)}
-.project:hover img{transform:scale(1.06)}
-.project .pill{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.6);color:#fff;font-weight:700;font-size:.8rem;padding:.35rem .6rem;border-radius:8px}
-.project .pill.promo{background:var(--vp-gradient)}
-.p-meta{padding:1rem;border-top:1px solid var(--vp-border)}
-.p-title{margin:0 0 .25rem 0;font-size:1.05rem;font-weight:800;color:#111827}
-.p-author{margin:0 0 .5rem 0;color:#64748b;font-size:.9rem}
-.p-stats{display:flex;gap:1rem;color:#374151;font-size:.85rem;font-weight:600}
-.p-stats .i{margin-right:.25rem}
-/* responsive */
-@media (max-width: 1024px){.profile-wrap{grid-template-columns:1fr}}
-@media (max-width: 768px){
-  .cover-img{height:140px}
-  .project .thumb{height:180px}
-}
-@media (max-width: 480px){
-  .profile-wrap{gap:1rem}
-  .avatar-wrap{margin-top:-40px}
-  .avatar{width:96px;height:96px}
-  .grid{grid-template-columns:1fr}
-}
+  .container {
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  .profile-wrap {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .profile-content {
+    min-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .profile-wrap {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .profile-wrap {
+      gap: var(--space-md);
+    }
+  }
 </style>
 
 <script>
-// Tabs and filters behavior with strict typing
-document.addEventListener('DOMContentLoaded', () => {
-  const tabs = Array.from(document.querySelectorAll('.tabs .tab')) as HTMLButtonElement[];
-  tabs.forEach((t) =>
-    t.addEventListener('click', () => {
-      tabs.forEach((x) => x.classList.remove('active'));
-      t.classList.add('active');
-    })
-  );
-
-  const searchInput = document.getElementById('searchInput') as HTMLInputElement | null;
-  const clearBtn = document.getElementById('clearSearch') as HTMLButtonElement | null;
-  const cards = Array.from(document.querySelectorAll('.card.project')) as HTMLElement[];
-  const filters = Array.from(document.querySelectorAll('.filter')) as HTMLButtonElement[];
-  const empty = document.getElementById('emptyState') as HTMLElement | null;
-
-  function applyFilter() {
-    const active = document.querySelector('.filter.active') as HTMLButtonElement | null;
-    const activeFilter = active?.getAttribute('data-filter') || 'todos';
-    const q = (searchInput?.value || '').toLowerCase().trim();
-
-    cards.forEach((card) => {
-      const title = (card.querySelector('.p-title')?.textContent || '').toLowerCase();
-      const category = card.getAttribute('data-category') || '';
-      const matchesText = q === '' || title.includes(q);
-      const matchesCat =
-        activeFilter === 'todos' ||
-        category === activeFilter ||
-        (activeFilter === 'imagenes' && category === 'imagenes');
-
-      card.style.display = matchesText && matchesCat ? 'block' : 'none';
-    });
-
-    const anyVisible = cards.some((c) => c.style.display !== 'none');
-    if (empty) empty.hidden = anyVisible;
-  }
-
-  if (searchInput && clearBtn) {
-    const si = searchInput;
-    const cb = clearBtn;
-
-    si.addEventListener('input', () => {
-      cb.style.display = si.value ? 'inline-flex' : 'none';
-      applyFilter();
-    });
-
-    cb.addEventListener('click', () => {
-      si.value = '';
-      cb.style.display = 'none';
-      si.focus();
-      applyFilter();
-    });
-  }
-
-  filters.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filters.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      if (searchInput && clearBtn) {
-        searchInput.value = '';
-        clearBtn.style.display = 'none';
-      }
-      applyFilter();
+  // Tab switching
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = Array.from(document.querySelectorAll('.profile-tab'));
+    
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
     });
   });
-
-  applyFilter();
-});
 </script>

@@ -1,0 +1,123 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+const {
+  title = 'Impulsione sua carrera com VitrinePro',
+  description = 'Junte-se a milhares de profissionais que já transformaram suas carreiras com VitrinePro',
+  buttonText = 'Começar Agora',
+  buttonLink = '/VitrinePro-frontend/cadastro'
+} = Astro.props;
+---
+
+<section class="final-cta-section">
+  <div class="container">
+    <div class="final-cta-content">
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <a href={buttonLink} class="final-cta-btn">
+        <span>{buttonText}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 7L19 13M19 13L13 19M19 13H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    padding: 40px 0;
+    background: linear-gradient(135deg, var(--vp-primary, #0A66C2), var(--vp-secondary, #004182));
+    color: white;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .final-cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .final-cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .final-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--vp-primary, #0A66C2);
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .final-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .final-cta-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .final-cta-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 768px) {
+    .final-cta-section {
+      padding: 60px 0;
+    }
+
+    .final-cta-content h2 {
+      font-size: 2rem;
+    }
+
+    .final-cta-content p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .final-cta-section {
+      padding: 40px 0;
+    }
+
+    .final-cta-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .final-cta-content p {
+      font-size: 0.95rem;
+    }
+
+    .final-cta-btn {
+      padding: 14px 24px;
+      font-size: 1rem;
+    }
+  }
+</style>

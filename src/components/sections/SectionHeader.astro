@@ -1,0 +1,62 @@
+---
+interface Props {
+  heading: string;
+  subheading?: string;
+  centered?: boolean;
+  class?: string;
+}
+
+const {
+  heading,
+  subheading,
+  centered = true,
+  class: className = ''
+} = Astro.props;
+
+const align = centered ? 'center' : 'left';
+---
+
+<section class={`section-header ${className}`.trim()}>
+  <div class="section-header-content">
+    <h2 class="section-heading">{heading}</h2>
+    {subheading && <p class="section-subheading">{subheading}</p>}
+  </div>
+</section>
+
+<style define:vars={{ align }}>
+  .section-header {
+    text-align: var(--align);
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .section-heading {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .section-subheading {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 768px) {
+    .section-heading {
+      font-size: 1.5rem;
+    }
+
+    .section-subheading {
+      font-size: 1rem;
+    }
+  }
+</style>
