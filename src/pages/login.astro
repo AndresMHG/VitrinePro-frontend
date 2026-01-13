@@ -6,11 +6,9 @@ import Footer from '../components/Footer.astro';
 // Auth components
 import AuthLayout from '../components/auth/AuthLayout.astro';
 import AuthCard from '../components/auth/AuthCard.astro';
-import AuthFooter from '../components/auth/AuthFooter.astro';
 
-// Common components
-import FormInput from '../components/common/FormInput.astro';
-import Button from '../components/common/Button.astro';
+// Login Form Component
+import LoginForm from '../components/auth/LoginForm.vue';
 ---
 
 <Layout title="Login">
@@ -21,36 +19,8 @@ import Button from '../components/common/Button.astro';
       description="¡Bienvenido de vuelta! Accede a tu vitrine."
       submitText="Entrar"
     >
-      <FormInput
-        id="email"
-        label="E-mail"
-        type="email"
-        placeholder="tu@email.com"
-        required
-      />
-      
-      <FormInput
-        id="password"
-        label="Contraseña"
-        type="password"
-        placeholder="Tu contraseña"
-        required
-      />
-
-      <div class="form-options">
-        <label class="checkbox-label">
-          <input type="checkbox" name="remember" class="checkbox-input" />
-          <span>Recuérdame</span>
-        </label>
-        <a href="/recuperar-senha" class="forgot-link">¿Olvidaste tu contraseña?</a>
-      </div>
-
-      <Button variant="primary" fullWidth type="submit">Entrar</Button>
+      <LoginForm client:load />
     </AuthCard>
-
-    <AuthFooter>
-      ¿No tienes cuenta? <a href="/cadastro">Crea una ahora</a>
-    </AuthFooter>
   </AuthLayout>
   <Footer />
 </Layout>

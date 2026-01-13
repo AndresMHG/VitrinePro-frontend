@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
+import path from 'path';
 
 import vue from '@astrojs/vue';
 
@@ -16,4 +17,11 @@ export default defineConfig({
   output: 'static',
   outDir: './docs',
   base: '/VitrinePro-frontend/',
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(process.cwd(), './src'),
+      },
+    },
+  },
 });

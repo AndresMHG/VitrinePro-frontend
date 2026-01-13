@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Profile Component
+import UserProfileView from '../components/UserProfileView.vue';
+---
+
+<Layout title="Mi Perfil">
+  <Header />
+  <main class="profile-page">
+    <UserProfileView client:load />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .profile-page {
+    min-height: calc(100vh - 200px);
+    background-color: var(--bg-primary);
+  }
+</style>

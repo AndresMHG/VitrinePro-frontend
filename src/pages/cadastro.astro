@@ -6,11 +6,9 @@ import Footer from '../components/Footer.astro';
 // Auth components
 import AuthLayout from '../components/auth/AuthLayout.astro';
 import AuthCard from '../components/auth/AuthCard.astro';
-import AuthFooter from '../components/auth/AuthFooter.astro';
 
-// Common components
-import FormInput from '../components/common/FormInput.astro';
-import Button from '../components/common/Button.astro';
+// Register Form Component
+import RegisterForm from '../components/auth/RegisterForm.vue';
 ---
 
 <Layout title="Crear Cuenta">
@@ -21,89 +19,8 @@ import Button from '../components/common/Button.astro';
       description="Únete a miles de profesionales y crea tu vitrine profesional."
       submitText="Crear Cuenta"
     >
-      <FormInput
-        id="fullName"
-        label="Nombre completo"
-        type="text"
-        placeholder="Tu nombre"
-        required
-      />
-      
-      <FormInput
-        id="email"
-        label="E-mail"
-        type="email"
-        placeholder="tu@email.com"
-        required
-      />
-
-      <FormInput
-        id="password"
-        label="Contraseña"
-        type="password"
-        placeholder="Crea una contraseña fuerte"
-        required
-      />
-
-      <FormInput
-        id="confirmPassword"
-        label="Confirmar contraseña"
-        type="password"
-        placeholder="Confirma tu contraseña"
-        required
-      />
-
-      <div class="form-terms">
-        <label class="checkbox-label">
-          <input type="checkbox" name="terms" class="checkbox-input" required />
-          <span>
-            Acepto los <a href="/terms" target="_blank">Términos de Uso</a> y 
-            <a href="/privacy" target="_blank">Política de Privacidad</a>
-          </span>
-        </label>
-      </div>
-
-      <Button variant="primary" fullWidth type="submit">Crear Cuenta</Button>
+      <RegisterForm client:load />
     </AuthCard>
-
-    <AuthFooter>
-      ¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a>
-    </AuthFooter>
   </AuthLayout>
   <Footer />
 </Layout>
-
-<style>
-  .form-terms {
-    margin-bottom: var(--space-md);
-  }
-
-  .checkbox-label {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
-    cursor: pointer;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .checkbox-input {
-    width: 18px;
-    height: 18px;
-    margin-top: 2px;
-    cursor: pointer;
-    accent-color: var(--primary);
-    flex-shrink: 0;
-  }
-
-  .checkbox-label a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .checkbox-label a:hover {
-    text-decoration: underline;
-  }
-</style>

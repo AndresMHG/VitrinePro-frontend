@@ -90,7 +90,7 @@ Agregar a `package.json`:
 ```json
 {
   "scripts": {
-    "dev": "astro dev --port 3000",
+    "dev": "astro dev --port 3001",
     "build": "astro build",
     "preview": "astro preview",
     "lint": "eslint src/ --ext .astro,.js,.ts",
